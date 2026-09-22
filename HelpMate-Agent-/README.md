@@ -128,7 +128,6 @@ The project uses **Azure AI Foundry** to support the AI-powered Help Desk Agent.
 
 ![Model Configuration](screenshots/foundry/knowledge.png)
 
-> **Note:** Screenshots should not contain API keys, passwords, access tokens, connection strings, or other sensitive credentials.
 
 ---
 
@@ -164,5 +163,3 @@ python manage.py runserver
 Then open:
 
 http://127.0.0.1:8000/
-
-Note: Keep API keys and other sensitive credentials in .env and never upload them to GitHub.
