@@ -1,0 +1,60 @@
+{
+  "devices": [
+    {
+      "device_id": "DEV-2001",
+      "user_id": "USR-1001",
+      "device_name": "LAPTOP-ENG-001",
+      "device_type": "Laptop",
+      "operating_system": "Windows 11",
+      "device_status": "Healthy",
+      "cpu_usage_percent": 32,
+      "memory_usage_percent": 58,
+      "disk_free_percent": 42,
+      "wifi_status": "Connected",
+      "vpn_status": "Connected",
+      "security_status": "Protected"
+    },
+    {
+      "device_id": "DEV-2002",
+      "user_id": "USR-1002",
+      "device_name": "LAPTOP-FIN-002",
+      "device_type": "Laptop",
+      "operating_system": "Windows 11",
+      "device_status": "Warning",
+      "cpu_usage_percent": 91,
+      "memory_usage_percent": 89,
+      "disk_free_percent": 8,
+      "wifi_status": "Connected",
+      "vpn_status": "Disconnected",
+      "security_status": "Protected"
+    },
+    {
+      "device_id": "DEV-2003",
+      "user_id": "USR-1003",
+      "device_name": "LAPTOP-MKT-003",
+      "device_type": "Laptop",
+      "operating_system": "Windows 11",
+      "device_status": "Healthy",
+      "cpu_usage_percent": 41,
+      "memory_usage_percent": 61,
+      "disk_free_percent": 35,
+      "wifi_status": "Connected",
+      "vpn_status": "Disconnected",
+      "security_status": "Protected"
+    },
+    {
+      "device_id": "DEV-2004",
+      "user_id": "USR-1004",
+      "device_name": "LAPTOP-OPS-004",
+      "device_type": "Laptop",
+      "operating_system": "Windows 11",
+      "device_status": "Healthy",
+      "cpu_usage_percent": 38,
+      "memory_usage_percent": 54,
+      "disk_free_percent": 48,
+      "wifi_status": "Connected",
+      "vpn_status": "Disconnected",
+      "security_status": "Protected"
+    }
+  ]
+}

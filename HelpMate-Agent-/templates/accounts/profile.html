@@ -1,0 +1,595 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>CampusIT | Profile</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: "Segoe UI", Arial, sans-serif;
+            background: #f5f7fb;
+            color: #172033;
+        }
+
+        /* ================= NAVBAR ================= */
+
+        .navbar {
+            height: 70px;
+            background: rgba(255,255,255,0.96);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 32px;
+            border-bottom: 1px solid #e5e7eb;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            backdrop-filter: blur(12px);
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 11px;
+        }
+
+        .brand-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 11px;
+            background: linear-gradient(135deg, #2563eb, #4f46e5);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            box-shadow: 0 7px 18px rgba(37,99,235,0.22);
+        }
+
+        .logo {
+            font-size: 21px;
+            font-weight: 750;
+        }
+
+        .logo span {
+            color: #2563eb;
+        }
+
+        .user-area {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .online {
+            display: flex;
+            align-items: center;
+            gap: 7px;
+            color: #64748b;
+            font-size: 12px;
+        }
+
+        .online-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #22c55e;
+            box-shadow: 0 0 0 4px rgba(34,197,94,0.1);
+        }
+
+        .user {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 7px 12px;
+            background: #f8fafc;
+            border: 1px solid #e5e7eb;
+            border-radius: 20px;
+            font-size: 13px;
+            color: #374151;
+        }
+
+        .small-avatar {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: #dbeafe;
+            color: #2563eb;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        /* ================= PAGE ================= */
+
+        .container {
+            width: 92%;
+            max-width: 900px;
+            margin: 35px auto 60px;
+        }
+
+        .back {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            color: #64748b;
+            text-decoration: none;
+            font-size: 13px;
+            margin-bottom: 20px;
+            transition: 0.2s;
+        }
+
+        .back:hover {
+            color: #2563eb;
+            transform: translateX(-2px);
+        }
+
+        /* ================= PROFILE CARD ================= */
+
+        .profile-card {
+            background: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 18px;
+            overflow: hidden;
+            box-shadow: 0 10px 28px rgba(15,23,42,0.06);
+        }
+
+        /* ================= PROFILE HERO ================= */
+
+        .profile-cover {
+            height: 145px;
+            background: linear-gradient(
+                135deg,
+                #2563eb,
+                #4f46e5
+            );
+            position: relative;
+            overflow: hidden;
+        }
+
+        .profile-cover::before {
+            content: "";
+            position: absolute;
+            width: 220px;
+            height: 220px;
+            border-radius: 50%;
+            right: -60px;
+            top: -120px;
+            background: rgba(255,255,255,0.10);
+        }
+
+        .profile-cover::after {
+            content: "";
+            position: absolute;
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            left: -50px;
+            bottom: -100px;
+            background: rgba(255,255,255,0.08);
+        }
+
+        .profile-main {
+            padding: 0 32px 30px;
+        }
+
+        .profile-header {
+            display: flex;
+            align-items: flex-end;
+            gap: 18px;
+            margin-top: -43px;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* ================= AVATAR ================= */
+
+        .avatar {
+            width: 86px;
+            height: 86px;
+            border-radius: 24px;
+            background: white;
+            border: 5px solid white;
+            box-shadow: 0 8px 20px rgba(15,23,42,0.12);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 34px;
+        }
+
+        .profile-title {
+            padding-bottom: 7px;
+        }
+
+        .profile-title h1 {
+            margin: 0 0 5px;
+            font-size: 25px;
+            letter-spacing: -0.5px;
+        }
+
+        .profile-title p {
+            margin: 0;
+            color: #64748b;
+            font-size: 13px;
+        }
+
+        /* ================= ACCOUNT BADGE ================= */
+
+        .account-badge {
+            margin-top: 27px;
+            padding: 14px 16px;
+            background: #f8fafc;
+            border: 1px solid #eef2f7;
+            border-radius: 11px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #475569;
+            font-size: 13px;
+        }
+
+        .account-badge-icon {
+            width: 34px;
+            height: 34px;
+            border-radius: 9px;
+            background: #eff6ff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .account-badge strong {
+            color: #2563eb;
+        }
+
+        /* ================= INFORMATION ================= */
+
+        .section-title {
+            margin: 28px 0 13px;
+            font-size: 16px;
+        }
+
+        .info {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 13px;
+        }
+
+        .info-item {
+            padding: 17px;
+            background: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 11px;
+            transition: 0.2s;
+        }
+
+        .info-item:hover {
+            border-color: #bfdbfe;
+            box-shadow: 0 5px 14px rgba(15,23,42,0.04);
+            transform: translateY(-2px);
+        }
+
+        .label {
+            font-size: 10px;
+            color: #94a3b8;
+            text-transform: uppercase;
+            letter-spacing: 0.6px;
+            font-weight: 700;
+            margin-bottom: 7px;
+        }
+
+        .value {
+            font-size: 14px;
+            font-weight: 600;
+            color: #334155;
+            word-break: break-word;
+        }
+
+        /* ================= ACTIONS ================= */
+
+        .actions {
+            margin-top: 28px;
+            padding-top: 22px;
+            border-top: 1px solid #eef2f7;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .security-text {
+            color: #94a3b8;
+            font-size: 11px;
+        }
+
+        .logout {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            padding: 10px 17px;
+            background: #fef2f2;
+            border: 1px solid #fecaca;
+            color: #dc2626;
+            text-decoration: none;
+            border-radius: 9px;
+            font-size: 13px;
+            font-weight: 600;
+            transition: 0.2s;
+        }
+
+        .logout:hover {
+            background: #dc2626;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 7px 15px rgba(220,38,38,0.18);
+        }
+
+        /* ================= RESPONSIVE ================= */
+
+        @media (max-width: 700px) {
+
+            .navbar {
+                padding: 0 18px;
+            }
+
+            .online {
+                display: none;
+            }
+
+            .container {
+                width: 94%;
+                margin-top: 22px;
+            }
+
+            .profile-main {
+                padding: 0 20px 25px;
+            }
+
+            .profile-header {
+                align-items: flex-start;
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .profile-title {
+                padding-bottom: 0;
+            }
+
+            .info {
+                grid-template-columns: 1fr;
+            }
+
+            .actions {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 15px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- ================= NAVBAR ================= -->
+
+<div class="navbar">
+
+    <div class="brand">
+
+        <div class="brand-icon">
+            ✦
+        </div>
+
+        <div class="logo">
+            Campus<span>IT</span>
+        </div>
+
+    </div>
+
+
+    <div class="user-area">
+
+        <div class="online">
+
+            <div class="online-dot"></div>
+
+            Helpdesk Online
+
+        </div>
+
+
+        <div class="user">
+
+            <div class="small-avatar">
+                {{ name|first|upper }}
+            </div>
+
+            {{ name }}
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- ================= PAGE ================= -->
+
+<div class="container">
+
+
+    <a href="{% url 'dashboard' %}" class="back">
+        ← Back to Dashboard
+    </a>
+
+
+    <div class="profile-card">
+
+
+        <!-- COVER -->
+
+        <div class="profile-cover"></div>
+
+
+        <div class="profile-main">
+
+
+            <!-- PROFILE HEADER -->
+
+            <div class="profile-header">
+
+                <div class="avatar">
+                    👤
+                </div>
+
+
+                <div class="profile-title">
+
+                    <h1>
+                        {{ name }}
+                    </h1>
+
+                    <p>
+                        CampusIT User
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- ACCOUNT STATUS -->
+
+            <div class="account-badge">
+
+                <div class="account-badge-icon">
+                    ✓
+                </div>
+
+                <div>
+
+                    <strong>
+                        Account Active
+                    </strong>
+
+                    <br>
+
+                    <span>
+                        Your CampusIT account is ready for IT support.
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <!-- INFORMATION -->
+
+            <h3 class="section-title">
+                Account Information
+            </h3>
+
+
+            <div class="info">
+
+
+                <div class="info-item">
+
+                    <div class="label">
+                        Full Name
+                    </div>
+
+                    <div class="value">
+                        {{ name }}
+                    </div>
+
+                </div>
+
+
+                <div class="info-item">
+
+                    <div class="label">
+                        Email Address
+                    </div>
+
+                    <div class="value">
+                        {{ email }}
+                    </div>
+
+                </div>
+
+
+                <div class="info-item">
+
+                    <div class="label">
+                        Campus User ID
+                    </div>
+
+                    <div class="value">
+                        {{ campus_user_id }}
+                    </div>
+
+                </div>
+
+
+                <div class="info-item">
+
+                    <div class="label">
+                        Account Type
+                    </div>
+
+                    <div class="value">
+                        CampusIT User
+                    </div>
+
+                </div>
+
+
+            </div>
+
+
+            <!-- ACTIONS -->
+
+            <div class="actions">
+
+                <div class="security-text">
+                    🔒 Keep your account credentials private.
+                </div>
+
+
+                <a href="{% url 'logout' %}" class="logout">
+                    🚪 Logout
+                </a>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</div>
+
+
+</body>
+
+</html>
+

@@ -1,0 +1,48 @@
+{
+  "users": [
+    {
+      "user_id": "USR-1001",
+      "name": "Alex Morgan",
+      "email": "alex.morgan@helpmate-demo.com",
+      "department": "Engineering",
+      "account_status": "Active",
+      "account_locked": false,
+      "password_status": "Valid",
+      "mfa_enabled": true,
+      "vpn_access": true
+    },
+    {
+      "user_id": "USR-1002",
+      "name": "Jordan Lee",
+      "email": "jordan.lee@helpmate-demo.com",
+      "department": "Finance",
+      "account_status": "Active",
+      "account_locked": false,
+      "password_status": "Expired",
+      "mfa_enabled": true,
+      "vpn_access": true
+    },
+    {
+      "user_id": "USR-1003",
+      "name": "Taylor Smith",
+      "email": "taylor.smith@helpmate-demo.com",
+      "department": "Marketing",
+      "account_status": "Active",
+      "account_locked": false,
+      "password_status": "Valid",
+      "mfa_enabled": true,
+      "vpn_access": false
+    },
+    {
+      "user_id": "USR-1004",
+      "name": "Casey Brown",
+      "email": "casey.brown@helpmate-demo.com",
+      "department": "Operations",
+      "account_status": "Locked",
+      "account_locked": true,
+      "password_status": "Valid",
+      "mfa_enabled": true,
+      "vpn_access": true
+    }
+  ]
+}

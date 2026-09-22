@@ -1,0 +1,92 @@
+{
+    "tickets": [
+        {
+            "ticket_id": "HD-1040",
+            "user_id": "USR-1002",
+            "issue": "Laptop performance is slow",
+            "priority": "Medium",
+            "status": "Open",
+            "assigned_team": "Desktop Support"
+        },
+        {
+            "ticket_id": "HD-1041",
+            "user_id": "USR-1003",
+            "issue": "VPN access unavailable",
+            "priority": "High",
+            "status": "Open",
+            "assigned_team": "Network Support"
+        },
+        {
+            "ticket_id": "HD-1042",
+            "user_id": "USR-1001",
+            "issue": "Account is still locked",
+            "priority": "Medium",
+            "status": "Open",
+            "assigned_team": "Identity Support",
+            "troubleshooting_attempted": "Confirmed username and stopped repeated sign-in attempts"
+        },
+        {
+            "ticket_id": "HD-1043",
+            "user_id": "USR-1004",
+            "issue": "User reports their account is locked and cannot sign in. Confirmed they are signing in with the correct username and asked them to stop repeated sign-in attempts; user confirmed they stopped. Support cannot check account status because no account-management tool is available in this chat.",
+            "priority": "Medium",
+            "status": "Open",
+            "assigned_team": "Identity Support",
+            "troubleshooting_attempted": "1) Confirmed correct username. 2) Instructed user to stop sign-in attempts; user confirmed. 3) Unable to check account status from this interface."
+        },
+        {
+            "ticket_id": "HD-1044",
+            "user_id": "USR-1004",
+            "issue": "Laptop cannot connect to university Wi\u2011Fi from campus; wireless adapter appears to be device-specific (other devices can connect). No authentication errors reported. Tried: confirmed Wi\u2011Fi enabled, selected correct network, disconnected/reconnected (including forgetting the network), moved closer to access point, restarted wireless adapter, restarted laptop, and verified others can connect.",
+            "priority": "Medium",
+            "status": "Open",
+            "assigned_team": "Network Support",
+            "troubleshooting_attempted": "Confirmed user is on campus and Wi\u2011Fi should be available; Wi\u2011Fi enabled; correct network selected; disconnected and rejoined network; moved closer to access point; restarted wireless adapter (toggled Wi\u2011Fi/Airplane mode); restarted laptop; verified other users/devices can connect; no authentication/password errors observed."
+        },
+        {
+            "ticket_id": "HD-1045",
+            "user_id": "USR-1004",
+            "issue": "Laptop cannot resolve a public hostname by name (access works by IP); the hostname resolves from other devices on the same network but not from this laptop.",
+            "priority": "High",
+            "status": "Open",
+            "assigned_team": "Network Support",
+            "troubleshooting_attempted": "Confirmed network connectivity; opened other public websites successfully; DNS servers on laptop match another working device; cleared local DNS cache; verified other device on same network can reach the hostname by name; attempted to run DNS diagnostic (nslookup) but user could not provide output."
+        },
+        {
+            "ticket_id": "HD-1046",
+            "user_id": "USR-1004",
+            "issue": "Authenticator app codes rejected as 'invalid code' for university account; user cannot complete MFA and cannot sign in to university services. Last successful sign-in 2 days ago.",
+            "priority": "High",
+            "status": "Open",
+            "assigned_team": "Identity Support",
+            "troubleshooting_attempted": "User generated a new code (failed). Verified phone has internet. Phone time is set to automatic. Authenticator app shows correct university account entry. User has not replaced phone. Sign-in fails across university services. Username confirmed correct."
+        },
+        {
+            "ticket_id": "HD-1047",
+            "user_id": "USR-1001",
+            "issue": "Unable to connect to university Wi\u2011Fi on personal device. Device shows the organizational network and attempts to join but remains disconnected/unusable after multiple troubleshooting steps.",
+            "priority": "High",
+            "status": "Open",
+            "assigned_team": "Network Support",
+            "troubleshooting_attempted": "Confirmed Wi\u2011Fi enabled; confirmed correct organizational network selected; disconnected and rejoined network; restarted wireless adapter; fully restarted device; moved closer to access point; confirmed other nearby users can connect; issue persists."
+        },
+        {
+            "ticket_id": "HD-1048",
+            "user_id": "USR-1001",
+            "issue": "Account is locked and support cannot check or unlock the account using available tools.",
+            "priority": "Medium",
+            "status": "Open",
+            "assigned_team": "Identity Support",
+            "troubleshooting_attempted": "Confirmed the user is signing in with the correct username. Asked the user to stop repeated sign-in attempts; user confirmed they have stopped. Unable to check account status because no account-management tool is available in this chat."
+        },
+        {
+            "ticket_id": "HD-1049",
+            "user_id": "USR-1001",
+            "issue": "User cannot complete MFA using authenticator app; university account is missing from authenticator app and user cannot sign in.",
+            "priority": "High",
+            "status": "Open",
+            "assigned_team": "Identity Support",
+            "troubleshooting_attempted": "User attempted to generate a code in authenticator app (no entry present). Confirmed phone has internet connectivity and correct automatic network time. User has not replaced phone or reinstalled the app."
+        }
+    ]
+}

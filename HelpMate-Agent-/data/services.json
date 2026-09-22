@@ -1,0 +1,44 @@
+{
+  "services": [
+    {
+      "service": "campus_wifi",
+      "status": "Operational"
+    },
+    {
+      "service": "student_portal",
+      "status": "Operational"
+    },
+    {
+      "service": "email",
+      "status": "Degraded"
+    },
+    {
+      "service": "vpn",
+      "status": "Operational"
+    },
+    {
+      "service": "dns",
+      "status": "Operational"
+    },
+    {
+      "service": "authentication",
+      "status": "Operational"
+    },
+    {
+      "service": "file_sharing",
+      "status": "Operational"
+    },
+    {
+      "service": "learning_management_system",
+      "status": "Operational"
+    },
+    {
+      "service": "printing",
+      "status": "Operational"
+    },
+    {
+      "service": "network",
+      "status": "Operational"
+    }
+  ]
+}

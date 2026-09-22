@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>CampusIT | AI Helpdesk</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Segoe UI", Arial, sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            overflow-x: hidden;
+            background: #f7f9fc;
+            color: #172033;
+        }
+
+        /* ---------- BACKGROUND ---------- */
+
+        .page {
+            min-height: 100vh;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .blob {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(2px);
+            opacity: 0.55;
+            z-index: 0;
+        }
+
+        .blob-one {
+            width: 420px;
+            height: 420px;
+            background: #dbeafe;
+            top: -180px;
+            left: -120px;
+            animation: floatOne 8s ease-in-out infinite;
+        }
+
+        .blob-two {
+            width: 360px;
+            height: 360px;
+            background: #ede9fe;
+            bottom: -150px;
+            right: -100px;
+            animation: floatTwo 9s ease-in-out infinite;
+        }
+
+        @keyframes floatOne {
+            0%, 100% {
+                transform: translate(0, 0);
+            }
+            50% {
+                transform: translate(25px, 20px);
+            }
+        }
+
+        @keyframes floatTwo {
+            0%, 100% {
+                transform: translate(0, 0);
+            }
+            50% {
+                transform: translate(-25px, -20px);
+            }
+        }
+
+        /* ---------- NAVBAR ---------- */
+
+        .navbar {
+            height: 76px;
+            padding: 0 6%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: relative;
+            z-index: 5;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .brand-icon {
+            width: 42px;
+            height: 42px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #2563eb, #4f46e5);
+            color: white;
+            font-size: 21px;
+            box-shadow: 0 8px 20px rgba(37, 99, 235, 0.25);
+        }
+
+        .brand-name {
+            font-size: 21px;
+            font-weight: 750;
+            letter-spacing: -0.5px;
+        }
+
+        .brand-name span {
+            color: #2563eb;
+        }
+
+        .status {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 13px;
+            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.75);
+            border: 1px solid #e5e7eb;
+            font-size: 13px;
+            color: #64748b;
+            backdrop-filter: blur(10px);
+        }
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #22c55e;
+            box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.12);
+        }
+
+        /* ---------- MAIN ---------- */
+
+        .main {
+            flex: 1;
+            width: 90%;
+            max-width: 1180px;
+            margin: auto;
+            display: grid;
+            grid-template-columns: 1.15fr 0.85fr;
+            gap: 70px;
+            align-items: center;
+            padding: 35px 0 60px;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* ---------- HERO ---------- */
+
+        .hero {
+            padding-left: 10px;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 14px;
+            border-radius: 30px;
+            background: #eff6ff;
+            color: #2563eb;
+            border: 1px solid #dbeafe;
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 22px;
+        }
+
+        .badge span {
+            font-size: 15px;
+        }
+
+        .hero h1 {
+            font-size: clamp(42px, 5vw, 66px);
+            line-height: 1.04;
+            letter-spacing: -2.8px;
+            margin-bottom: 22px;
+            max-width: 650px;
+        }
+
+        .hero h1 .blue {
+            color: #2563eb;
+        }
+
+        .hero-text {
+            max-width: 570px;
+            color: #64748b;
+            font-size: 17px;
+            line-height: 1.75;
+            margin-bottom: 30px;
+        }
+
+        /* ---------- FEATURE PILLS ---------- */
+
+        .features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 35px;
+        }
+
+        .feature {
+            padding: 10px 14px;
+            background: rgba(255, 255, 255, 0.8);
+            border: 1px solid #e5e7eb;
+            border-radius: 10px;
+            font-size: 13px;
+            color: #475569;
+            transition: 0.25s;
+        }
+
+        .feature:hover {
+            transform: translateY(-3px);
+            border-color: #bfdbfe;
+            box-shadow: 0 8px 20px rgba(15, 23, 42, 0.07);
+        }
+
+        /* ---------- LOGIN CARD ---------- */
+
+        .login-card {
+            background: rgba(255, 255, 255, 0.9);
+            border: 1px solid rgba(226, 232, 240, 0.9);
+            border-radius: 22px;
+            padding: 36px;
+            box-shadow:
+                0 25px 60px rgba(15, 23, 42, 0.10),
+                0 4px 12px rgba(15, 23, 42, 0.04);
+            backdrop-filter: blur(16px);
+        }
+
+        .login-card h2 {
+            font-size: 28px;
+            letter-spacing: -0.7px;
+            margin-bottom: 8px;
+        }
+
+        .login-subtitle {
+            color: #64748b;
+            font-size: 14px;
+            margin-bottom: 28px;
+        }
+
+        /* ---------- MESSAGES ---------- */
+
+        .messages {
+            margin-bottom: 20px;
+        }
+
+        .message {
+            padding: 11px 13px;
+            border-radius: 9px;
+            background: #fef2f2;
+            border: 1px solid #fecaca;
+            color: #b91c1c;
+            font-size: 13px;
+        }
+
+        /* ---------- INPUT ---------- */
+
+        .form-group {
+            margin-bottom: 19px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 13px;
+            font-weight: 650;
+            color: #334155;
+        }
+
+        .input-wrapper {
+            position: relative;
+        }
+
+        .input-icon {
+            position: absolute;
+            left: 14px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #94a3b8;
+            font-size: 16px;
+            pointer-events: none;
+        }
+
+        .form-group input {
+            width: 100%;
+            height: 49px;
+            padding: 0 45px;
+            border: 1px solid #dbe1ea;
+            border-radius: 10px;
+            background: #fafbfc;
+            color: #172033;
+            font-size: 14px;
+            outline: none;
+            transition: 0.2s;
+        }
+
+        .form-group input:hover {
+            border-color: #cbd5e1;
+        }
+
+        .form-group input:focus {
+            background: white;
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.10);
+        }
+
+        .password-toggle {
+            position: absolute;
+            right: 13px;
+            top: 50%;
+            transform: translateY(-50%);
+            border: none;
+            background: transparent;
+            cursor: pointer;
+            color: #94a3b8;
+            font-size: 16px;
+        }
+
+        .password-toggle:hover {
+            color: #2563eb;
+        }
+
+        /* ---------- LOGIN BUTTON ---------- */
+
+        .login-btn {
+            width: 100%;
+            height: 50px;
+            border: none;
+            border-radius: 10px;
+            background: linear-gradient(135deg, #2563eb, #4f46e5);
+            color: white;
+            font-size: 15px;
+            font-weight: 650;
+            cursor: pointer;
+            margin-top: 5px;
+            box-shadow: 0 10px 22px rgba(37, 99, 235, 0.22);
+            transition: 0.25s;
+        }
+
+        .login-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 14px 28px rgba(37, 99, 235, 0.28);
+        }
+
+        .login-btn:active {
+            transform: translateY(0);
+        }
+
+        .login-btn.loading {
+            pointer-events: none;
+            opacity: 0.8;
+        }
+
+        /* ---------- SIGNUP ---------- */
+
+        .signup {
+            text-align: center;
+            margin-top: 23px;
+            color: #64748b;
+            font-size: 13px;
+        }
+
+        .signup a {
+            color: #2563eb;
+            text-decoration: none;
+            font-weight: 650;
+        }
+
+        .signup a:hover {
+            text-decoration: underline;
+        }
+
+        /* ---------- SECURITY NOTE ---------- */
+
+        .security {
+            margin-top: 23px;
+            padding-top: 18px;
+            border-top: 1px solid #eef2f7;
+            display: flex;
+            justify-content: center;
+            gap: 7px;
+            color: #94a3b8;
+            font-size: 12px;
+        }
+
+        /* ---------- FOOTER ---------- */
+
+        .footer {
+            text-align: center;
+            padding: 15px;
+            color: #94a3b8;
+            font-size: 12px;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* ---------- ANIMATION ---------- */
+
+        .fade-in {
+            animation: fadeIn 0.7s ease forwards;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(12px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ---------- MOBILE ---------- */
+
+        @media (max-width: 900px) {
+
+            .main {
+                grid-template-columns: 1fr;
+                gap: 35px;
+                padding-top: 25px;
+            }
+
+            .hero {
+                text-align: center;
+                padding: 0;
+            }
+
+            .hero-text {
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .features {
+                justify-content: center;
+            }
+
+            .login-card {
+                max-width: 500px;
+                width: 100%;
+                margin: auto;
+            }
+        }
+
+        @media (max-width: 550px) {
+
+            .navbar {
+                padding: 0 20px;
+            }
+
+            .status {
+                display: none;
+            }
+
+            .main {
+                width: 92%;
+            }
+
+            .hero h1 {
+                font-size: 40px;
+                letter-spacing: -1.8px;
+            }
+
+            .hero-text {
+                font-size: 15px;
+            }
+
+            .login-card {
+                padding: 25px 20px;
+                border-radius: 17px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="page">
+
+    <!-- Animated background -->
+    <div class="blob blob-one"></div>
+    <div class="blob blob-two"></div>
+
+
+    <!-- NAVBAR -->
+
+    <nav class="navbar">
+
+        <div class="brand">
+
+            <div class="brand-icon">
+                ✦
+            </div>
+
+            <div class="brand-name">
+                Campus<span>IT</span>
+            </div>
+
+        </div>
+
+        <div class="status">
+            <div class="status-dot"></div>
+            Helpdesk Online
+        </div>
+
+    </nav>
+
+
+    <!-- MAIN CONTENT -->
+
+    <main class="main">
+
+
+        <!-- HERO SECTION -->
+
+        <section class="hero fade-in">
+
+            <div class="badge">
+                <span>✦</span>
+                AI-powered IT support
+            </div>
+
+            <h1>
+                Solve IT issues
+                <span class="blue">smarter.</span>
+            </h1>
+
+            <p class="hero-text">
+                CampusIT helps you diagnose common IT problems,
+                find trusted solutions, check service status,
+                and create support tickets when an issue needs
+                further assistance.
+            </p>
+
+
+            <div class="features">
+
+                <div class="feature">
+                    🤖 AI Assistance
+                </div>
+
+                <div class="feature">
+                    📚 Trusted Knowledge
+                </div>
+
+                <div class="feature">
+                    🎫 Smart Tickets
+                </div>
+
+                <div class="feature">
+                    🟢 Service Status
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- LOGIN SECTION -->
+
+        <section class="login-card fade-in">
+
+            <h2>Welcome back</h2>
+
+            <p class="login-subtitle">
+                Sign in to continue to your CampusIT account.
+            </p>
+
+
+            {% if messages %}
+
+            <div class="messages">
+
+                {% for message in messages %}
+
+                <div class="message">
+                    {{ message }}
+                </div>
+
+                {% endfor %}
+
+            </div>
+
+            {% endif %}
+
+
+            <form method="POST" id="loginForm">
+
+                {% csrf_token %}
+
+
+                <!-- EMAIL -->
+
+                <div class="form-group">
+
+                    <label for="email">
+                        Email address
+                    </label>
+
+                    <div class="input-wrapper">
+
+                        <span class="input-icon">
+                            ✉
+                        </span>
+
+                        <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            placeholder="you@example.com"
+                            autocomplete="email"
+                            required
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <!-- PASSWORD -->
+
+                <div class="form-group">
+
+                    <label for="password">
+                        Password
+                    </label>
+
+                    <div class="input-wrapper">
+
+                        <span class="input-icon">
+                            🔒
+                        </span>
+
+                        <input
+                            type="password"
+                            id="password"
+                            name="password"
+                            placeholder="Enter your password"
+                            autocomplete="current-password"
+                            required
+                        >
+
+                        <button
+                            type="button"
+                            class="password-toggle"
+                            id="togglePassword"
+                            aria-label="Show password"
+                        >
+                            👁
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <button
+                    type="submit"
+                    class="login-btn"
+                    id="loginButton"
+                >
+                    <span id="buttonText">
+                        Sign in to CampusIT
+                    </span>
+                </button>
+
+            </form>
+
+
+            <div class="signup">
+
+                Don't have an account?
+
+                <a href="{% url 'signup' %}">
+                    Create an account
+                </a>
+
+            </div>
+
+
+            <div class="security">
+                🔐 Your account information is protected
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <footer class="footer">
+        CampusIT • AI-Powered IT Helpdesk
+    </footer>
+
+</div>
+
+
+<script>
+
+    /* ---------- PASSWORD VISIBILITY ---------- */
+
+    const passwordInput = document.getElementById("password");
+    const togglePassword = document.getElementById("togglePassword");
+
+    togglePassword.addEventListener("click", function () {
+
+        if (passwordInput.type === "password") {
+
+            passwordInput.type = "text";
+            togglePassword.textContent = "🙈";
+            togglePassword.setAttribute(
+                "aria-label",
+                "Hide password"
+            );
+
+        } else {
+
+            passwordInput.type = "password";
+            togglePassword.textContent = "👁";
+            togglePassword.setAttribute(
+                "aria-label",
+                "Show password"
+            );
+        }
+
+    });
+
+
+    /* ---------- LOGIN LOADING STATE ---------- */
+
+    const loginForm = document.getElementById("loginForm");
+    const loginButton = document.getElementById("loginButton");
+    const buttonText = document.getElementById("buttonText");
+
+    loginForm.addEventListener("submit", function () {
+
+        loginButton.classList.add("loading");
+        buttonText.textContent = "Signing you in...";
+
+    });
+
+
+    /* ---------- INPUT INTERACTION ---------- */
+
+    const inputs = document.querySelectorAll("input");
+
+    inputs.forEach(function (input) {
+
+        input.addEventListener("focus", function () {
+            this.parentElement.style.transform = "translateY(-1px)";
+        });
+
+        input.addEventListener("blur", function () {
+            this.parentElement.style.transform = "translateY(0)";
+        });
+
+    });
+
+</script>
+
+</body>
+</html>
+```
